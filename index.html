@@ -6,27 +6,20 @@
   <title>Acetech Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Inline JavaScript for mobile toggle */
-    function toggleMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active');
-    }
-  </style>
 </head>
 <body>
 
   <!-- Navigation Bar -->
   <header>
     <nav>
-      <div class="logo">Acetech Solutions</div>
+      <a href="index.html" class="logo">Acetech Solutions</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
     </nav>
   </header>
 
@@ -40,9 +33,10 @@
   </section>
 
   <!-- Introduction Section -->
-  <section id="about">
+  <section id="introduction">
     <h2>Introduction</h2>
-    <p>Welcome to Acetech Solutions, where we blend creativity and technology to deliver state-of-the-art software solutions.</p>
+    <p class="intro-paragraph">Acetech Solutions is committed to providing innovative technology solutions tailored to help your business succeed in the digital era.</p>
+    <p class="intro-paragraph">Our expert team is dedicated to ensuring seamless and effective transformation through cutting-edge solutions.</p>
   </section>
 
   <!-- Services Section -->
@@ -51,31 +45,56 @@
     <div class="service-grid">
       <div class="service-item">
         <h3>Web Development</h3>
-        <p>We create dynamic, responsive websites to establish your digital presence.</p>
+        <p>We create responsive, visually engaging websites tailored to meet your business needs.</p>
       </div>
       <div class="service-item">
         <h3>Mobile App Development</h3>
-        <p>We design and build mobile apps tailored to engage your audience.</p>
+        <p>Our team develops user-friendly mobile applications that provide seamless experiences.</p>
       </div>
       <div class="service-item">
-        <h3>Digital Marketing</h3>
-        <p>We offer targeted digital marketing solutions to grow your business.</p>
+        <h3>Cloud Solutions</h3>
+        <p>We offer cloud services to help you store, manage, and access data with high security and reliability.</p>
+      </div>
+      <div class="service-item">
+        <h3>AI & Machine Learning</h3>
+        <p>We help implement AI and ML algorithms to improve decision-making and automate processes.</p>
+      </div>
+      <div class="service-item">
+        <h3>Blockchain Development</h3>
+        <p>Our team provides blockchain solutions to create decentralized and secure systems for businesses.</p>
+      </div>
+      <div class="service-item">
+        <h3>UI/UX Design</h3>
+        <p>We design intuitive, user-friendly interfaces to enhance the user experience for all your digital products.</p>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials Section with Carousel -->
   <section id="testimonials">
     <h2>Testimonials</h2>
-    <blockquote>"The team at Acetech Solutions helped us take our business online with ease and professionalism. Highly recommended!" - Client A</blockquote>
+    <div class="testimonial-carousel">
+      <button class="carousel-btn left" onclick="prevTestimonial()">&#10094;</button>
+      <div class="testimonial-box">
+        <p class="testimonial-content">"Acetech Solutions transformed our digital presence and boosted our online engagement!" - A Satisfied Client</p>
+      </div>
+      <div class="testimonial-box">
+        <p class="testimonial-content">"Their development team is top-notch. Highly recommended for any tech solutions." - Another Happy Customer</p>
+      </div>
+      <div class="testimonial-box">
+        <p class="testimonial-content">"Our mobile app turned out amazing, thanks to Acetech Solutions!" - Satisfied App Owner</p>
+      </div>
+      <button class="carousel-btn right" onclick="nextTestimonial()">&#10095;</button>
+    </div>
   </section>
 
   <!-- Contact Form Section -->
   <section id="contact">
     <h2>Contact Us</h2>
-    <form action="#" method="post">
+    <p>Have questions or want to discuss a project? Reach out to us through the form below.</p>
+    <form action="#" method="post" onsubmit="return validateForm()">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" required minlength="3">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
       <label for="message">Message</label>
@@ -84,5 +103,57 @@
     </form>
   </section>
 
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function validateForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const namePattern = /^[A-Za-z\s]{3,}$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!namePattern.test(name)) {
+        alert('Name must be at least 3 characters and contain only letters.');
+        return false;
+      }
+      
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address (must contain "@").');
+        return false;
+      }
+
+      if (!message.trim()) {
+        alert('Message cannot be empty.');
+        return false;
+      }
+
+      return true;
+    }
+    // JavaScript for Testimonial Carousel
+    let currentIndex = 0;
+    const testimonials = document.querySelectorAll('.testimonial-box');
+
+    function showTestimonial(index) {
+      testimonials.forEach((testimonial, i) => {
+        testimonial.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    function nextTestimonial() {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      showTestimonial(currentIndex);
+    }
+
+    function prevTestimonial() {
+      currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(currentIndex);
+    }
+
+    showTestimonial(currentIndex);
+  </script>
 </body>
 </html>

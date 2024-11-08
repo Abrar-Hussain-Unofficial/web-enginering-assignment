@@ -3,45 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services - Acetech Solutions</title>
+  <title>Our Services - Acetech Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Navigation Bar -->
   <header>
     <nav>
-      <div class="logo">Acetech Solutions</div>
+      <a href="index.html" class="logo">Acetech Solutions</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger">&#9776;</button>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
     </nav>
   </header>
 
-  <section>
+  <!-- Services Section -->
+  <section id="services">
     <h2>Our Services</h2>
     <div class="service-grid">
       <div class="service-item">
         <h3>Web Development</h3>
-        <p>We develop custom, responsive websites that enhance your brand’s online presence.</p>
+        <p>We create responsive, visually engaging websites tailored to meet your business needs.</p>
       </div>
       <div class="service-item">
         <h3>Mobile App Development</h3>
-        <p>Our mobile apps are crafted to engage users on every platform, maximizing your reach.</p>
-      </div>
-      <div class="service-item">
-        <h3>Digital Marketing</h3>
-        <p>Targeted marketing solutions to help you grow your audience and business.</p>
+        <p>Our team develops user-friendly mobile applications that provide seamless experiences.</p>
       </div>
       <div class="service-item">
         <h3>Cloud Solutions</h3>
-        <p>Secure, scalable cloud options tailored to your business needs.</p>
+        <p>We offer cloud services to help you store, manage, and access data with high security and reliability.</p>
+      </div>
+      <div class="service-item">
+        <h3>AI & Machine Learning</h3>
+        <p>We help implement AI and ML algorithms to improve decision-making and automate processes.</p>
+      </div>
+      <div class="service-item">
+        <h3>Blockchain Development</h3>
+        <p>Our team provides blockchain solutions to create decentralized and secure systems for businesses.</p>
+      </div>
+      <div class="service-item">
+        <h3>UI/UX Design</h3>
+        <p>We design intuitive, user-friendly interfaces to enhance the user experience for all your digital products.</p>
       </div>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
